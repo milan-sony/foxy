@@ -194,3 +194,6 @@ pyrightconfig.json
 
 # End of https://www.toptal.com/developers/gitignore/api/visualstudiocode,python
 Ask AI to edit or generate...
+
+# custom
+free_proxy_list.json
