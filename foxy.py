@@ -15,6 +15,9 @@ def get_proxies():
 
     proxies_jsonresponse = response.json()
     print("--------JSON RESPONSES--------")
-    print(proxies_jsonresponse)
+    # print(proxies_jsonresponse)
+    with open("free_proxy_list.json", "w") as json_proxy_file:
+        json.dump(proxies_jsonresponse, json_proxy_file)
+        json_proxy_file.close()
 
 get_proxies()
