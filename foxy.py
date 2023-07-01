@@ -92,9 +92,9 @@ def check_proxies():
                 print("some problem occur in check proxies")
                 pass
             if response.status_code == 200:
+                print({proxy})
     else:
         print("proxy list is empty")
-        pass
 # thread = threading.Thread(target=check_proxies).start()
 
 
