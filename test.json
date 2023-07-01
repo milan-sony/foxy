@@ -1,0 +1,59 @@
+{
+    "data": [
+        {
+            "_id": "60d8b60dce5b3bb0e9c986aa",
+            "ip": "173.244.200.154",
+            "port": "44302",
+            "anonymityLevel": "elite",
+            "asn": "AS32780",
+            "city": "New York",
+            "country": "US",
+            "created_at": "2021-06-27T17:31:56.995Z",
+            "google": false,
+            "isp": "Hosting Services, Inc.",
+            "lastChecked": 1624971676,
+            "latency": 75.7,
+            "org": "Hosting Services, Inc.",
+            "protocols": [
+                "socks4"
+            ],
+            "region": null,
+            "responseTime": 69,
+            "speed": 163,
+            "updated_at": "2021-06-29T13:01:16.017Z",
+            "workingPercent": null,
+            "upTime": 100,
+            "upTimeSuccessCount": 43,
+            "upTimeTryCount": 43
+        },
+        {
+            "_id": "60d97bc2ce5b3bb0e9ff3d1a",
+            "ip": "173.244.200.156",
+            "port": "64631",
+            "anonymityLevel": "elite",
+            "asn": "AS32780",
+            "city": "New York",
+            "country": "US",
+            "created_at": "2021-06-28T07:35:30.569Z",
+            "google": false,
+            "isp": "Hosting Services, Inc.",
+            "lastChecked": 1624971618,
+            "latency": 76.4,
+            "org": "Hosting Services, Inc.",
+            "protocols": [
+                "socks4"
+            ],
+            "region": null,
+            "responseTime": 51,
+            "speed": 157,
+            "updated_at": "2021-06-29T13:00:18.742Z",
+            "workingPercent": null,
+            "upTime": 100,
+            "upTimeSuccessCount": 29,
+            "upTimeTryCount": 29
+        }
+    ],
+    "total": 5803,
+    "page": 1,
+    "limit": 500
+}
