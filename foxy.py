@@ -68,4 +68,4 @@ def proxy(search_url):
     return link
 
 # starting the application
-eel.start("index.html")
+eel.start("index.html", size=(800,500))

@@ -1,3 +1,12 @@
+:root {
+    --background-color: black;
+    --text-color: white;
+    --primary-color: orangered;
+    --other-color: red;
+    --primary-font: 'Raleway', sans-serif;
+    --secondary-font: 'Roboto', sans-serif;
+}
+
 *{
     margin: 0;
     padding: 0;
@@ -9,7 +18,7 @@
 .main-container{
     width: 100%;
     height: 100vh;
-    background-color: black;
+    background-color: var(--background-color);
 }
 
 .heading{
@@ -25,14 +34,16 @@
 }
 .heading h1{
     margin: 0;
-    color: white;
+    font-family: var(--primary-font);
+    color: var(--text-color);
     text-transform: uppercase;
     font-size: 40px;
     letter-spacing: 6px;
 }
 .heading h1 sub{
     margin: 0;
-    color: white;
+    color: var(--text-color);
+    font-family: var(--primary-font);
     text-transform: uppercase;
     font-size: 20px;
     letter-spacing: 6px;
@@ -45,11 +56,14 @@
 
 .search {
     position: relative;
-    width: 350px;
+    width: 400px;
 }
 .search-input {
     width: 100%;
-    border: 1px solid white;
+    border: 1px solid var(--text-color);
+    color: var(--primary-color);
+    font-size: 16px;
+    font-family: var(--secondary-font);
     border-radius: 100px;
     padding: 15px 15px 15px 15px; 
     line-height: 1;
@@ -63,9 +77,10 @@
     top: 3px;
     bottom: 3px;
     border: 0;
-    background: orangered;
-    color: white;
+    background: var(--primary-color);
+    color: var(--text-color);
     font-size: 16px;
+    font-family: var(--secondary-font);
     font-weight: 500;
     text-transform: uppercase;
     outline: none;
@@ -76,8 +91,8 @@
 }
 .search-button:hover{
     cursor:pointer;
-    background-color: black;
-    color: white
+    background-color: var(--background-color);
+    color: var(--text-color)
 }
 
 .desc{
@@ -89,11 +104,14 @@
     text-align: center;
 }
 .desc span{
-    color: red;
-    font-size: 16px;
+    color: var(--other-color);
+    font-size: 18px;
+    font-family: var(--secondary-font);
 }
 .desc p{
-    color: white;
-    font-size: 16px;
+    font-family: var(--secondary-font);
+    /* color: var(--text-color); */
+    color: gray;
+    font-size: 18px;
     margin: 10px 0;
 }
