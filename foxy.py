@@ -1,108 +1,60 @@
-import requests
-import json
-import time
-import queue
-import threading
+from fp.fp import FreeProxy
+from fp.errors import FreeProxyException
+
+# custom user agent
+from user_agent import generate_user_agent, generate_navigator
+
+from selenium import webdriver
+from selenium.webdriver.chrome.service import Service as ChromeService
+from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.chrome.options import Options
 
 
-proxy_list = []
-
-def get_proxies():
-    url = "https://proxylist.geonode.com/api/proxy-list?limit=500&page=1&sort_by=lastChecked&sort_type=desc&speed=fast&protocols=socks4%2Csocks5"
-    response = requests.get(url)
-    response_status = response.status_code
-
-    if response_status != 200:
-        print("Something went wrong with the connection from URL")
+def main():
+    try:
+        proxy = FreeProxy(google=True).get()
+        print("Proxy Adderss")
+        print(proxy)
+    except FreeProxyException:
+        print("No Proxy Found")
         exit()
-    else:
-        print("URL connection is successfull \nStatus Code: "+str(response_status))
-        pass
 
-    proxies_jsonresponse = response.json()
-    print("--------JSON RESPONSES--------")
-    # print(proxies_jsonresponse)
-    with open("free_proxy_list.json", "w") as json_proxy_file:
-        json.dump(proxies_jsonresponse, json_proxy_file)
-        json_proxy_file.close()
-    time.sleep(1)
-    list_proxies()
+    # generate a user agent
+    generate_user_agent()
+    user_agent = generate_navigator()
 
-def  list_proxies():
-    global proxy_list
-    with open('free_proxy_list.json', 'r') as json_proxy_file:
-        proxy_data = json.load(json_proxy_file)
+    # define custom options for the Selenium driver
+    options = Options()
 
-    # entry = data['data'][0]
-    # print(entry)
-    # ip = entry['ip']
-    # print("IP:", ip)
+    # user agent
+    options.add_argument(f"user-agent={user_agent}")
 
-    for proxies in proxy_data['data']:
-        # print(entry)
-        ip = proxies['ip']
-        port = proxies['port']
-        country = proxies['country']
-        city = proxies['city']
-        speed = proxies['speed']
-        latency = proxies['latency']
-        response_time = proxies['responseTime']
-        anonymityLevel = proxies["anonymityLevel"]
-        # print("IP: ", ip)
-        # print("Port: ", port)
-        proxy_ip = ip+":"+port
-        # print(proxy_ip)
-        proxy_list.append(proxy_ip)
-    proxy_count = len(proxy_list)
-    # print(proxy_list)
-    print(proxy_count)
+    # free proxy server URL
+    proxy_server_url = proxy
+    options.add_argument(f'--proxy-server={proxy_server_url}')
 
-        # ips = queue.put(proxy_ip)
-        # print(queue.get(ips))
-    check_proxies()
+    # to stop chrome from automatically closing
+    options.add_experimental_option("detach", True)
 
-counter = 0
+    # translate page to english
+    options.add_argument("--lang=en-GB")
+    # options.add_experimental_option('prefs', {'intl.accept_languages': 'en,en_US'})
 
-# proxy_list = ["15.235.6.188:8080",
-#             "136.226.49.0:10605",
-#             "165.225.222.233:10605",
-#             "167.71.225.180:3128"]
-# try:
-#     for proxy in proxy_list:
-#         url = "http://ipinfo.io/json"
-#         response = requests.get(url, proxies={'http':proxy, 'https':proxy})
-#         counter += 1
-#         print(counter)
-#         print(response)
-# except:
-#     print("failed")
+    # remote allow origins
+    options.add_argument('--remote-allow-origins=*')
 
-def check_proxies():
-    global proxy_list, counter
-    if len(proxy_list) != 0:
-        for proxy in proxy_list:
-            try:
-                url = "http://ipinfo.io/json"
-                response = requests.get(
-                    url,
-                    proxies={'http':proxy,
-                            'https':proxy})
-                if response.status_code == 200:
-                    print({proxy})
-            except:
-                counter += 1
-                print("some problem occur in check proxies")
-                print(counter)
-                continue
-            
-    else:
-        print("proxy list is empty")
-# thread = threading.Thread(target=check_proxies).start()
+    # accept insecure certificates
+    # http://allselenium.info/selfsigned-certificates-python-selenium/
+    options.set_capability("acceptInsecureCerts", True)
 
+    driver = webdriver.Chrome(
+        options=options,
+        service=ChromeService(ChromeDriverManager().install()))
 
-# def newfun():
-#     print("Helllo")
+    link = 'https://whatismyipaddress.com/'
 
-# check_proxies()
-# list_proxies()
-get_proxies()
+    # maximize browser window
+    driver.maximize_window()
+    driver.get(link)
+
+main()
