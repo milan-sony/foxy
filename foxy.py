@@ -9,8 +9,24 @@ from selenium.webdriver.chrome.service import Service as ChromeService
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.chrome.options import Options
 
+import eel
 
-def main():
+# initializing the application
+eel.init("web")
+
+
+# @eel.expose	
+# def get_url(search_url):
+# 	url = search_url
+# 	return url
+
+# # start the index.html file /
+# # starting the application
+# eel.start("index.html")
+
+# exposing the function to javascript
+@eel.expose
+def main(search_url):
     try:
         proxy = FreeProxy(google=True).get()
         print("Proxy Adderss")
@@ -18,6 +34,8 @@ def main():
     except FreeProxyException:
         print("No Proxy Found")
         exit()
+    
+    url = search_url
 
     # generate a user agent
     generate_user_agent()
@@ -51,10 +69,14 @@ def main():
         options=options,
         service=ChromeService(ChromeDriverManager().install()))
 
-    link = 'https://whatismyipaddress.com/'
+    link = url
 
     # maximize browser window
     driver.maximize_window()
     driver.get(link)
 
-main()
+    return link
+
+# start the index.html file /
+# starting the application
+eel.start("index.html")

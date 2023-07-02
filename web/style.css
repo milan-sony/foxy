@@ -83,12 +83,13 @@
 .desc{
     padding-top: 60px;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
 }
 .desc p{
-    margin: 0;
     color: white;
     font-size: 16px;
+    margin: 10px 0;
 }
