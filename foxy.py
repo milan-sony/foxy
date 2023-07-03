@@ -19,8 +19,7 @@ eel.init("web")
 def proxy(search_url):
     try:
         proxy = FreeProxy(google=True).get()
-        print("Proxy Adderss")
-        print(proxy)
+        print("Proxy Address: "+proxy)
     except FreeProxyException:
         print("No Proxy Found")
         exit()

@@ -21,13 +21,14 @@
         </div>
         <div class="container">
             <div class="search">
-                <input type="text" class="search-input" id="url" placeholder="Enter the URL">
+                <input type="text" class="search-input" id="url" placeholder="Enter the URL" required>
                 <button class="search-button" id="submit-btn" type="submit" onclick="search()">search</button>  
             </div>
         </div>
         <div class="desc">
-            <p><span>*</span> Please try to give a valid URL and also try to give the full address of the URL (Eg: https://www.google.com/)</p>
-            <p><span>*</span> Don't close this tab after the chrome has open till you have finished browsing</p>
+            <h1 class="req-field">Please enter a URL</h1>
+            <h1 class="alert-desc">Please enter a valid URL with full address (Eg: https://www.google.com/)</h1>
+            <p>Don't close this tab after the chrome has opened till you have finished browsing</p>
             <p id="res"></p>
         </div>
     </div>
