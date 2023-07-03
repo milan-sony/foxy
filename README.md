@@ -83,6 +83,8 @@ First it will the get the URL to search from the user through UI. This URL is pa
 
 > The proxy server that we get will most probabily a Japanese server. So there might be some language translate issue inside the website
 
+> You can add/create new tabs on chrome window that open up and search for anything
+
 ## Note
 
 Please enter a valid URL with full address
@@ -93,7 +95,7 @@ Please enter a valid URL with full address
 
 ## Keep in mind
 
-A VPN and proxy server both mask your IP address. But a VPN will also encrypt the data you send and receive, something that a proxy server doesn't do.
+A proxy server mask your IP address, but won't encrypt the data you send and receive.
 
 ## Screenshot
 
