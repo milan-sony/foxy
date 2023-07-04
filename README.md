@@ -6,7 +6,7 @@
   FOXY<sub>PROXY</sub>
 </h1>
 
-<p align="center">A proxy server build with selenium for chrome web driver in python</p>
+<p align="center">A proxy server build with selenium for chrome webdriver in python</p>
 
 ## 💭 BTS
 
